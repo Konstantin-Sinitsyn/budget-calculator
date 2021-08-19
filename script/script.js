@@ -9,7 +9,8 @@ const  totalBalance = document.querySelector(".total__balance"),
     form = document.getElementById("form"),
     operationName = document.querySelector(".operation__name"),
     operationAmount = document.querySelector(".operation__amount"),
-    btn = document.querySelector('.btn');
+    btn = document.querySelector('.btn'),
+    expensesOperations = [/купил/i,/оплатил/i,/дал/i,/заплатил/i,/отдал/i,/приобрёл/i,/приобрел/i];
 
 let dateBaseOperation = JSON.parse(localStorage.getItem('calc')) || [];
 
@@ -58,7 +59,6 @@ const addOperation = (event) => {
         operationAmount.style.borderColor = '';
         
     if (operationNameValue !== '' && operationAmountValue !== ''){
-        const expensesOperations = [/купил/i,/оплатил/i,/дал/i,/заплатил/i,/отдал/i,/приобрёл/i,/приобрел/i];
         for (let i = 0;i < expensesOperations.length;i++) {
         if (expensesOperations[i].test(operationNameValue)) {
             operationAmountValue = '-' + operationAmountValue;
